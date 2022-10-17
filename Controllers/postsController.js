@@ -51,7 +51,7 @@ module.exports={
         })
     },
     DeletePost:(req,res)=>{
-        deletePost(req.body,(error,result)=>{
+        deletePost(req.params,(error,result)=>{
             if (error) {
                 res.json({
                     status: 404,
@@ -67,7 +67,7 @@ module.exports={
         })
     },
     GetPostbyUserId:(req,res)=>{
-        getPostbyUserId(req.body,(error,result)=>{
+        getPostbyUserId(req.params,(error,result)=>{
             if (error) {
                 res.json({
                     status: 404,

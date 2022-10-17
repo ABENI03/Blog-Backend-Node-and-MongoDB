@@ -1,4 +1,4 @@
-const { creteUser, getUsers, getUserProfile } = require('../models/usersModel');
+const { creteUser, getUsers, getUserById, changePassword, updateProfile, login } = require('../models/usersModel');
 
 
 module.exports = {
@@ -38,8 +38,8 @@ module.exports = {
             }
         })
     },
-    GetUserProfile: (req, res) => {
-        getUserProfile(req.params, (error, result) => {
+    GetUserById: (req, res) => {
+        getUserById(req.params, (error, result) => {
             if (error) {
                 res.json({
                     status: 404,
@@ -55,56 +55,58 @@ module.exports = {
             }
         })
     },
-    // Login: (req, res) => {
-    //     login(req.body, (error, result) => {
-    //         if (error) {
-    //             res.json({
-    //                 status: 404,
-    //                 message: error
-    //             })
-    //         }
-    //         else {
-    //             res.json({
-    //                 status: 200,
-    //                 message: 'Login Successful',
-    //                 data: result
-    //             })
-    //         }
-    //     })
-    // },
-    // UpdateProfile: (req, res) => {
-    //     updateProfile(req.body, (error, result) => {
-    //         if (error) {
-    //             res.json({
-    //                 status: 404,
-    //                 message: error
-    //             })
-    //         }
-    //         else {
-    //             res.json({
-    //                 status: 200,
-    //                 message: 'Updated Sucessfully',
-    //                 data: result
-    //             })
-    //         }
-    //     })
-    // },
-    // UpdatePassword: (req, res) => {
-    //     changePassword(req.body, (error, result) => {
-    //         if (error) {
-    //             res.json({
-    //                 status: 404,
-    //                 message: error
-    //             })
-    //         }
-    //         else {
-    //             res.json({
-    //                 status: 200,
-    //                 message: 'Password Updated Sucessfully',
-    //                 data: result
-    //             })
-    //         }
-    //     })
-    // }
+
+    Login: (req, res) => {
+        login(req.body, (error, result) => {
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Login Successful',
+                    data: result
+                })
+            }
+        })
+    },
+    UpdateProfile: (req, res) => {
+    
+        updateProfile(req.body, (error, result) => {
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Updated Sucessfully',
+                    data: result
+                })
+            }
+        })
+    },
+    UpdatePassword: (req, res) => {
+        changePassword(req.body, (error, result) => {
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Password Updated Sucessfully',
+                    data: result
+                })
+            }
+        })
+    }
     
 }
