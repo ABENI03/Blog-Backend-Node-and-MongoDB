@@ -23,6 +23,7 @@ module.exports = {
     getPosts: (data, callback) => {
         
         Posts.find()
+        .populate({path:'authorid', select:'firstname lastname email mobile email profilepicture-_id'})
              .then((result)=>{
                 return callback(null,result)
              })

@@ -6,7 +6,7 @@ var UserSchema=new mongoose.Schema({
     email:String,
     password:String,
     profilepicture:String
-})
+},{timestamps:true})
 
 var Users=new mongoose.model("Users",UserSchema);
 
