@@ -22,7 +22,7 @@ mongoose.connect(mongoDbUrl)
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'))
+app.use(express.static('Public'))
 ///users route
 app.use('/api/users',userRoute)
 app.use('/api/posts',PostsRoute)
