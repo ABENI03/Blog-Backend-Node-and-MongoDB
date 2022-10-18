@@ -1,9 +1,15 @@
 const { creteUser, getUsers, getUserById, changePassword, updateProfile, login } = require('../models/usersModel');
+const jwt=require("jsonwebtoken")
 
+const maxAge=3*24*60*60;
+const createToken=(userid)=>{
+    return jwt.sign({userid},process.env.Secret,{
+        expiresIn:maxAge
+    })
+}
 
 module.exports = {
-    CreateUser: (req, res) => {
-        
+    CreateUser: (req, res) => { 
         creteUser(req.body, (error, result) => {
             if (error) {
                 console.log(error)
@@ -65,9 +71,12 @@ module.exports = {
                 })
             }
             else {
+                const token=createToken(result.id)
+                res.cookie("token",token,{maxAge:maxAge*1000});
                 res.json({
                     status: 200,
                     message: 'Login Successful',
+                    token:token,
                     data: result
                 })
             }
@@ -107,6 +116,15 @@ module.exports = {
                 })
             }
         })
+    },
+    LogOut:(req,res)=>{
+        res.cookie("token","",{maxAge:1});
+        res.json({
+            status: 200,
+            message: 'Logout Successful',
+            
+        })
     }
+    
     
 }

@@ -6,6 +6,7 @@ const port=process.env.SERVER_PORT;
 const mongoose=require("mongoose");
 const userRoute = require('./Routes/usersRoute');
 const PostsRoute=require('./Routes/postsRoute');
+const cookieParser=require("cookie-parser")
 //mongoose Database Connection
 const mongoDbUrl=process.env.mongoDbUrl
 
@@ -18,6 +19,7 @@ mongoose.connect(mongoDbUrl)
         })
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
 ///users route
 app.use('/users',userRoute)

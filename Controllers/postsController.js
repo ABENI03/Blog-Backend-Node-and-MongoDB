@@ -1,4 +1,4 @@
-const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, deletePost, getCommentByPostId, commentPost } = require("../models/postsModel")
+const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, deletePost, getCommentByPostId, commentPost, deleteComment } = require("../models/postsModel")
 
 module.exports={ 
     CreatePost:(req,res)=>{
@@ -129,6 +129,22 @@ module.exports={
                     status: 200,
                     message: 'comment fetching successfully',
                     data:result
+                })
+            }
+        })
+    },
+    DeleteComment:(req,res)=>{
+        deleteComment(req.params,(error,result)=>{
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Comment deleted successfully'
                 })
             }
         })

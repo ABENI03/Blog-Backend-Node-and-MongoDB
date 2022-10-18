@@ -1,3 +1,4 @@
+const Comment = require('../Schema/Comment')
 const Posts = require('../Schema/Posts')
 
 module.exports = {
@@ -81,28 +82,42 @@ module.exports = {
          })
     },
     commentPost: (data, callback) => {
-        var queryStatment = 'INSERT INTO `post_comment`( `postId`, `title`, `content`) VALUES (?,?,?)';
-        var values = [
-            data.postid,
-            data.title,
-            data.content
-
-
-        ]
-        pool.query(queryStatment, values, (error, result) => {
-            if (error) return callback(error)
-            else return callback(null, result)
+        var comment=new Comment({
+            postid:data.postid,
+            autorid:data.userid,
+            content:data.content
         })
+
+        comment.save()
+                .then((result)=>{
+                    return callback(null,result)
+                })
+                .catch((error)=>{
+                    return callback(error)
+                })
+            
     },
     getCommentByPostId: (data, callback) => {
-        var queryStatment = 'SELECT * FROM `post_comment` WHERE `postId`=?';
-        var values = [
-            data.postid,
+        var postId=data.postid
+        Comment.findById(postId)
+        .then((result)=>{
+            return callback(null,result)
+         })
+         .catch((error)=>{
+            return callback(error)
+         })
+    },
+    deleteComment:(data, callback) => {
 
-        ]
-        pool.query(queryStatment, values, (error, result) => {
-            if (error) return callback(error)
-            else return callback(null, result)
-        })
+        
+        var commentId=data.commentid
+        Comment.deleteOne({_id:commentId})
+             .then((result)=>{
+                return callback(null,result)
+             })
+             .catch((error)=>{
+                return callback(error)
+             })
+        
     },
 }
