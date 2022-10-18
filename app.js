@@ -2,13 +2,13 @@ require('dotenv').config()
 const express=require('express')
 const bodyParser=require("body-parser")
 const app=express()
-const port=process.env.SERVER_PORT;
+const port=process.env.SERVER_PORT || 5000;
 const mongoose=require("mongoose");
 const userRoute = require('./Routes/usersRoute');
 const PostsRoute=require('./Routes/postsRoute');
 const cookieParser=require("cookie-parser")
 //mongoose Database Connection
-const mongoDbUrl=process.env.mongoDbUrl || 5000
+const mongoDbUrl=process.env.mongoDbUrl
 
 mongoose.connect(mongoDbUrl)
         .then((result)=>{
