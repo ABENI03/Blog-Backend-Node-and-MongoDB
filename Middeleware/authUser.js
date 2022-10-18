@@ -19,7 +19,7 @@ const requireAuth=(req,res,next)=>{
     else{
         res.json({
             status: 404,
-            message: "Invalid Token"
+            message: "Invalid Token! Please Login"
         })
     }
 }
