@@ -7,6 +7,7 @@ const mongoose=require("mongoose");
 const userRoute = require('./Routes/usersRoute');
 const PostsRoute=require('./Routes/postsRoute');
 const cookieParser=require("cookie-parser")
+
 //mongoose Database Connection
 const mongoDbUrl=process.env.mongoDbUrl
 
@@ -27,7 +28,7 @@ app.use('/api/users',userRoute)
 app.use('/api/posts',PostsRoute)
 //home page
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html')
+    res.sendFile(__dirname + '/Views/index.html')
   });
 app.get('/*',(req, res) => {
     res.json({
