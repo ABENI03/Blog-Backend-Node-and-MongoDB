@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Blog Backend Api</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Blog Api Call</h1>
+    <h2>Users End point</h2>
+    <form>
+      <h3>Register New User</h3>
+      <p><code>POST /api/users</code></p>
+
+    </form>
+    <form>
+      <h3>Get All Users(Require Login)</h3>
+      <p><code>GET /api/users/</code></p>
+
+    </form>
+    <form>
+      <h3>Get User(Require Login)</h3>
+      <p><code>GET /api/users/:userid</code></p>
+
+    </form>
+    <form>
+      <h3>Get All Users(Require Login)</h3>
+      <p><code>GET /api/users/</code></p>
+
+    </form>
+    <form>
+      <h3>Login</h3>
+      <p><code>POST /api/users/login</code></p>
+
+    </form>
+    <form>
+      <h3>Uploade Picture(Require Login)</h3>
+      <p><code>PATCH /api/users/picture</code></p>
+
+    </form>
+    <form>
+      <h3>Change Password(Require Login)</h3>
+      <p><code>PATCH /api/users/password</code></p>
+
+    </form>
+
+    <form>
+      <h3>Logout</h3>
+      <p><code>POST /api/users/logout</code></p>
+
+    </form>
+    <h2>Posts End point</h2>
+    <form>
+      <h3>Create New Post(Require Login)</h3>
+      <p><code>POST /api/posts</code></p>
+    </form>
+    <form>
+      <h3>Get Post</h3>
+      <p><code>GET /api/posts</code></p>
+    </form>
+    <form>
+      <h3>Get User Post</h3>
+      <p><code>GET /api/posts/user/:userid</code></p>
+    </form>
+            <form>
+              <h3>Get Post By Post Id</h3>
+              <p><code>GET /api/posts/:postid</code></p>
+    </form>
+    <form>
+      <h3>Update Post(Require Login)</h3>
+      <p><code>PATCH /api/posts/</code></p>
+    </form>
+
+    <form>
+      <h3>Delete Post(Require Login)</h3>
+      <p><code>DELETE /api/posts/:postid</code></p>
+    </form>
+    <form>
+      <h3>Comment on Post(Require Login)</h3>
+      <p><code>Post /api/posts/Comment</code></p>
+    </form>
+
+    <form>
+      <h3>Get Comments(Require Login)</h3>
+      <p><code>GET /api/posts/Comment/:postid</code></p>
+    </form>
+    <form>
+      <h3>Delete Comment(Require Login)</h3>
+      <p><code>DELETE /api/posts/comment/:commentid</code></p>
+    </form>
+
+</body>
+
+</html>

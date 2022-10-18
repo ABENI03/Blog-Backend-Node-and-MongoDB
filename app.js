@@ -21,10 +21,20 @@ mongoose.connect(mongoDbUrl)
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'))
 ///users route
-app.use('/users',userRoute)
-app.use('/posts',PostsRoute)
-
+app.use('/api/users',userRoute)
+app.use('/api/posts',PostsRoute)
+//home page
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/index.html')
+  });
+app.get('/*',(req, res) => {
+    res.json({
+        status:400,
+        message:"Route Not Found"
+    })
+  });
 
 
 app.listen(port,()=>{

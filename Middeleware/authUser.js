@@ -11,7 +11,7 @@ const requireAuth=(req,res,next)=>{
                 })
             }
             else{
-                console.log(decodedToken)
+                req.decodedToken=decodedToken
                 next()
             }
           }) 
@@ -24,4 +24,20 @@ const requireAuth=(req,res,next)=>{
     }
 }
 
-module.exports={requireAuth}
+const AuthisAllowedToChange=(req,res,next)=>{
+    const decodedToken=req.decodedToken
+  
+
+    if(decodedToken!=undefined && (decodedToken.userid==req.params.userid || decodedToken.userid==req.body.userid)){
+          
+        next()
+    }
+    else{
+        res.json({
+            status: 404,
+            message: "you are not allowed To Make Change To Data"
+        })
+    }
+}
+
+module.exports={requireAuth,AuthisAllowedToChange}

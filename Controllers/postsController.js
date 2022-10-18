@@ -117,7 +117,7 @@ module.exports={
         })
     },
     GetCommentByPostId:(req,res)=>{
-        getCommentByPostId(req.body,(error,result)=>{
+        getCommentByPostId(req.params,(error,result)=>{
             if (error) {
                 res.json({
                     status: 404,
