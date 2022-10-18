@@ -1,4 +1,4 @@
-const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, deletePost, getCommentByPostId, commentPost, deleteComment } = require("../models/postsModel")
+const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, deletePost, getCommentByPostId, commentPost, deleteComment } = require("../Models/postsModel")
 
 module.exports={ 
     CreatePost:(req,res)=>{

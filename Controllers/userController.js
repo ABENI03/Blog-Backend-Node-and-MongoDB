@@ -1,4 +1,4 @@
-const { creteUser, getUsers, getUserById, changePassword, updateProfile, login } = require('../models/usersModel');
+const { creteUser, getUsers, getUserById, changePassword, updateProfile, login } = require('../Models/usersModel');
 const jwt=require("jsonwebtoken")
 
 const maxAge=3*24*60*60;
