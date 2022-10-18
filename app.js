@@ -8,7 +8,7 @@ const userRoute = require('./Routes/usersRoute');
 const PostsRoute=require('./Routes/postsRoute');
 const cookieParser=require("cookie-parser")
 //mongoose Database Connection
-const mongoDbUrl=process.env.mongoDbUrl
+const mongoDbUrl=process.env.mongoDbUrl || 5000
 
 mongoose.connect(mongoDbUrl)
         .then((result)=>{
