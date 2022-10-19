@@ -2,9 +2,12 @@ const Comment = require('../Schema/Comment')
 const Posts = require('../Schema/Posts')
 
 module.exports = {
-    createPost: (data, callback) => {
+    createPost: (req, callback) => {
+        var authorid=req.decodedToken.userid;
+        var data=req.body
+       
         var post = new Posts({
-            authorid: data.userid,
+            authorid: authorid,
             title: data.title,
             summary: data.summary,
             content: data.content
@@ -24,7 +27,8 @@ module.exports = {
         
         Posts.find()
         .populate({path:'authorid', select:'firstname lastname email mobile email profilepicture-_id'})
-             .then((result)=>{
+        .sort({createdAt: -1})
+        .then((result)=>{
                 return callback(null,result)
              })
              .catch((error)=>{
@@ -65,6 +69,8 @@ module.exports = {
         Posts.find({
             authorid:authorId
         })
+        .populate({path:'authorid', select:'firstname lastname email mobile email profilepicture-_id'})
+        .sort({createdAt: -1})
         .then((result)=>{
             return callback(null,result)
          })
@@ -75,6 +81,8 @@ module.exports = {
     getPostbyPostId: (data, callback) => {
         var postId=data.postid
         Posts.findById(postId)
+        .populate({path:'authorid', select:'firstname lastname email mobile email profilepicture-_id'})
+        .sort({createdAt: -1})
         .then((result)=>{
             return callback(null,result)
          })

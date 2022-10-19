@@ -2,7 +2,7 @@ const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, dele
 
 module.exports={ 
     CreatePost:(req,res)=>{
-        createPost(req.body,(error,result)=>{
+        createPost(req,(error,result)=>{
             if (error) {
                 res.json({
                     status: 404,
