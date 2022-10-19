@@ -19,7 +19,7 @@ mongoose.connect(mongoDbUrl)
             console.log(error)
         })
 
-const whitelist = ["http://localhost:3000"]
+const whitelist = ["http://localhost:3000","https://blog-front-end.herokuapp.com"]
 const corsOptions = {
           origin: function (origin, callback) {
             if (!origin || whitelist.indexOf(origin) !== -1) {
